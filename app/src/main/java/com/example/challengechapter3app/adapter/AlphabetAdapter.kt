@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.challengechapter3app.DataWord
 import com.example.challengechapter3app.R
@@ -35,17 +36,9 @@ class AlphabetAdapter(private val listAlphabet : ArrayList<DataWord>) : Recycler
                 putStringArrayList("DATA_WORD", Word.dataWord.getValue(listAlphabet[position].word))
             }
 
-            val fragmentMove = OptionFragment()
-            setFragment(holder, fragmentMove, bundleData)
-
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_optionFragment, bundleData)
         }
+
     }
 
-    private fun setFragment(holder : ViewHolder, fragment : Fragment, bundleData: Bundle){
-        fragment.arguments = bundleData
-        (holder.itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragment, fragment)
-            commit()
-        }
-    }
 }
