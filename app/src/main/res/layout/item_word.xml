@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="12dp">
+    <Button
+        android:id="@+id/btnHuruf"
+        android:layout_marginStart="4dp"
+        style= "@style/buttonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text"
+        android:minHeight="48dp"
+        app:backgroundTint = "@color/blue_thin"
+        app:strokeColor = "@color/purple"
+        app:strokeWidth = "2dp"
+        />
+
+</LinearLayout>
