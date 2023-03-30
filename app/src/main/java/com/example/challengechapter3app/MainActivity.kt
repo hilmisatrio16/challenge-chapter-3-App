@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.challengechapter3app.databinding.ActivityMainBinding
 import com.example.challengechapter3app.fragment.HomeFragment
 import com.example.challengechapter3app.fragment.OptionFragment
@@ -19,10 +20,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val fragmentHome = HomeFragment()
-
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -36,20 +33,24 @@ class MainActivity : AppCompatActivity() {
                     findNavController(R.id.fragmentContainerView).navigate(R.id.action_optionFragment_to_homeFragment)
                 }
                 R.id.menu_list -> {
-                    val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
-                    if (fragment is HomeFragment) {
-                        fragment.changeLayout("list")
-                    }else if(fragment is OptionFragment){
-                        fragment.changeLayout("list")
+                    val navHostFragmentMain = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+                    val activeFragmentMain = navHostFragmentMain.childFragmentManager.primaryNavigationFragment
+
+                    if (activeFragmentMain is HomeFragment) {
+                        activeFragmentMain.changeLayoutRecycleview("list")
+                    }else if(activeFragmentMain is OptionFragment){
+                        activeFragmentMain.changeLayoutRecycleview("list")
                     }
                     true
                 }
                 R.id.menu_grid -> {
-                    val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
-                    if (fragment is HomeFragment) {
-                        fragment.changeLayout("grid")
-                    }else if(fragment is OptionFragment){
-                        fragment.changeLayout("grid")
+                    val navHostFragmentMain = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+                    val activeFragmentMain = navHostFragmentMain.childFragmentManager.primaryNavigationFragment
+
+                    if (activeFragmentMain is HomeFragment) {
+                        activeFragmentMain.changeLayoutRecycleview("grid")
+                    }else if(activeFragmentMain is OptionFragment){
+                        activeFragmentMain.changeLayoutRecycleview("grid")
                     }
                     true
                 }

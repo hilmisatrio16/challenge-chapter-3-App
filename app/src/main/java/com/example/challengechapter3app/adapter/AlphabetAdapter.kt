@@ -35,7 +35,7 @@ class AlphabetAdapter(private val listAlphabet : ArrayList<DataWord>) : Recycler
             val bundleData = Bundle().apply {
                 putStringArrayList("DATA_WORD", Word.dataWord.getValue(listAlphabet[position].word))
             }
-
+            //nav component
             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_optionFragment, bundleData)
         }
 
