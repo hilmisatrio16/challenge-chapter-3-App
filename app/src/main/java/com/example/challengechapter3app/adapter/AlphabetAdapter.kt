@@ -43,6 +43,7 @@ class AlphabetAdapter(private val listAlphabet : ArrayList<DataWord>) : Recycler
 
     private fun setFragment(holder : ViewHolder, fragment : Fragment, bundleData: Bundle){
         fragment.arguments = bundleData
+        //intent
         (holder.itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction().apply {
             replace(R.id.flFragment, fragment)
             commit()

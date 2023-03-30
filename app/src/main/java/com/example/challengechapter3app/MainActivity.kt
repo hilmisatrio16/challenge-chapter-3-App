@@ -39,20 +39,30 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 R.id.menu_list -> {
-                    val fragment = supportFragmentManager.findFragmentById(R.id.flFragment)
-                    if (fragment is HomeFragment) {
-                        fragment.changeLayout("list")
-                    }else if(fragment is OptionFragment){
-                        fragment.changeLayout("list")
+                    val fragmentMain = supportFragmentManager.findFragmentById(R.id.flFragment)
+
+                    if (fragmentMain is HomeFragment) {
+
+                        fragmentMain.changeLayoutRecycleview("list")
+
+                    }else if(fragmentMain is OptionFragment){
+
+                        fragmentMain.changeLayoutRecycleview("list")
+
                     }
                     true
                 }
                 R.id.menu_grid -> {
-                    val fragment = supportFragmentManager.findFragmentById(R.id.flFragment)
-                    if (fragment is HomeFragment) {
-                        fragment.changeLayout("grid")
-                    }else if(fragment is OptionFragment){
-                        fragment.changeLayout("grid")
+                    val fragmentMain = supportFragmentManager.findFragmentById(R.id.flFragment)
+
+                    if (fragmentMain is HomeFragment) {
+
+                        fragmentMain.changeLayoutRecycleview("grid")
+
+                    }else if(fragmentMain is OptionFragment){
+
+                        fragmentMain.changeLayoutRecycleview("grid")
+
                     }
                     true
                 }

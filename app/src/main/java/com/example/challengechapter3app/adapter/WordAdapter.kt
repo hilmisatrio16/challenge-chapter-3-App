@@ -27,6 +27,7 @@ class WordAdapter(private val listWord : ArrayList<DataWord>) : RecyclerView.Ada
         holder.btnWord.text = listWord[position].word
 
         holder.btnWord.setOnClickListener {
+            //intent implicit
             val keyword = listWord[position].word
             val moveToWeb = Intent(Intent.ACTION_VIEW)
             moveToWeb.data = Uri.parse("https://www.google.com/search?q=$keyword")

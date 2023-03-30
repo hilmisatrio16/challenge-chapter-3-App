@@ -37,7 +37,7 @@ class OptionFragment : Fragment() {
 
     }
 
-    fun changeLayout(layout : String) {
+    fun changeLayoutRecycleview(layout : String) {
         when (layout) {
 
             "list" -> {
