@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challengechapter3app.DataWord
@@ -14,6 +15,8 @@ class OptionFragment : Fragment() {
 
     private lateinit var binding: FragmentOptionBinding
     private var listWord = ArrayList<DataWord>()
+
+    private val args : OptionFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +31,9 @@ class OptionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val getList = arguments?.getStringArrayList("DATA_WORD")
-        listWord.addAll(getDataList(getList!!))
+        //using methode safeargs
+        val getListWord = args.word.toList()
+        listWord.addAll(getDataList(ArrayList(getListWord!!)))
         showRecyclerview()
 
         (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)

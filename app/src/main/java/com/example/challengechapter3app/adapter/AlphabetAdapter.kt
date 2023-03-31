@@ -1,10 +1,12 @@
 package com.example.challengechapter3app.adapter
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -12,9 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.challengechapter3app.DataWord
 import com.example.challengechapter3app.R
 import com.example.challengechapter3app.data.Word
+import com.example.challengechapter3app.fragment.HomeFragmentDirections
 import com.example.challengechapter3app.fragment.OptionFragment
 
-class AlphabetAdapter(private val listAlphabet : ArrayList<DataWord>) : RecyclerView.Adapter<AlphabetAdapter.ViewHolder>() {
+class AlphabetAdapter(private val context : Context ,private val listAlphabet : ArrayList<DataWord>) : RecyclerView.Adapter<AlphabetAdapter.ViewHolder>() {
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         val btnAlphabet: Button = view.findViewById(R.id.btnHuruf)
     }
@@ -32,11 +35,11 @@ class AlphabetAdapter(private val listAlphabet : ArrayList<DataWord>) : Recycler
         holder.btnAlphabet.text = listAlphabet[position].word
         holder.btnAlphabet.setOnClickListener {
             //mengirim data antar fragment
-            val bundleData = Bundle().apply {
-                putStringArrayList("DATA_WORD", Word.dataWord.getValue(listAlphabet[position].word))
-            }
-            //nav component
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_optionFragment, bundleData)
+            val arrDataWord = Word.dataWord.getValue(listAlphabet[position].word).toTypedArray()
+            //nav component passing data dengan safeargs
+            val directionNav = HomeFragmentDirections.actionHomeFragmentToOptionFragment(arrDataWord)
+            Navigation.findNavController(it).navigate(directionNav)
+            Toast.makeText(context, "You choose alphabet ${listAlphabet[position].word}", Toast.LENGTH_SHORT).show()
         }
 
     }

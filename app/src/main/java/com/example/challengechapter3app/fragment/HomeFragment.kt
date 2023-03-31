@@ -55,7 +55,7 @@ class HomeFragment : Fragment() {
 
     private fun showRecyclerview() {
         binding.recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        val alphabetAdapter = AlphabetAdapter(listDataHuruf)
+        val alphabetAdapter = AlphabetAdapter(requireContext(), listDataHuruf)
         binding.recyclerView.adapter = alphabetAdapter
     }
 
