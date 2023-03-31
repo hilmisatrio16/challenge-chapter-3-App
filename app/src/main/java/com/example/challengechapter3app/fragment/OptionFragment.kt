@@ -16,6 +16,7 @@ class OptionFragment : Fragment() {
     private lateinit var binding: FragmentOptionBinding
     private var listWord = ArrayList<DataWord>()
 
+    //kalau ini error coba cek di buildgradle.app dan sync bagian plugins safeargs
     private val args : OptionFragmentArgs by navArgs()
 
     override fun onCreateView(
